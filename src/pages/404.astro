@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base title="Página não encontrada — Eduardo Escudero" noindex>
+  <SiteHeader />
+  <main id="conteudo" class="not-found wrap">
+    <p class="eyebrow">ROTA NÃO ENCONTRADA / 404</p>
+    <span class="error-code" aria-hidden="true">
+      404<span>.</span>
+    </span>
+    <h1>
+      Essa ideia ainda não
+      <br />
+      virou uma página.
+    </h1>
+    <p>O endereço pode ter mudado. Meus projetos continuam por aqui.</p>
+    <a class="button primary" href="/#projetos">
+      Explorar projetos <Icon name="arrow" size={18} />
+    </a>
+  </main>
+  <SiteFooter />
+</Base>

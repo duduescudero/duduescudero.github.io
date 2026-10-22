@@ -1,0 +1,183 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import '../styles/project.css';
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const {
+  title = 'Eduardo Escudero — Desenvolvimento com propósito',
+  description = 'Eduardo Escudero, estudante de Engenharia de Software na FIAP. Projetos pessoais e acadêmicos em interfaces, APIs e aplicações completas.',
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL('/social-card.png', Astro.site);
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Eduardo Escudero',
+  url: String(Astro.site),
+  sameAs: ['https://github.com/duduescudero'],
+  description:
+    'Estudante de Engenharia de Software na FIAP, em busca de estágio em desenvolvimento.',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#090b0f" />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Eduardo Escudero" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Eduardo Escudero — ideias ganham forma, código faz acontecer. Portfólio em fundo escuro com detalhes roxos."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">
+      Pular para o conteúdo
+    </a>
+    <slot />
+    <script>
+      const sections =
+        document.querySelectorAll<HTMLElement>('main section[id]');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              for (const link of document.querySelectorAll<HTMLAnchorElement>(
+                '[data-section]',
+              )) {
+                if (link.hash === '#' + entry.target.id)
+                  link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+              }
+            }
+          },
+          { rootMargin: '-15% 0px -60% 0px' },
+        );
+        sections.forEach((section) => observer.observe(section));
+      }
+      const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+      menu?.addEventListener('click', (event) => {
+        if ((event.target as HTMLElement).closest('a')) menu.open = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menu?.open) {
+          menu.open = false;
+          menu.querySelector('summary')?.focus();
+        }
+      });
+      const copy =
+        document.querySelector<HTMLButtonElement>('[data-copy-email]');
+      const message = document.querySelector<HTMLElement>('#copy-status');
+      copy?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('eduardoescudero911@gmail.com');
+          if (message) message.textContent = 'E-mail copiado!';
+        } catch {
+          if (message)
+            message.textContent = 'E-mail: eduardoescudero911@gmail.com';
+        }
+      });
+      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if ('IntersectionObserver' in window && !motion.matches) {
+        const reveals = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in-view');
+                reveals.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.05 },
+        );
+        document
+          .querySelectorAll(
+            '.section-heading,.case-section,.featured-project,.secondary-project',
+          )
+          .forEach((element) => reveals.observe(element));
+      }
+      const viewer = document.querySelector<HTMLDialogElement>('#image-viewer');
+      const images = [
+        ...document.querySelectorAll<HTMLAnchorElement>('[data-gallery]'),
+      ];
+      const largeImage = viewer?.querySelector<HTMLImageElement>('img');
+      const caption = viewer?.querySelector<HTMLElement>('#gallery-caption');
+      const counter = viewer?.querySelector<HTMLElement>('[data-counter]');
+      let current = 0;
+      let opener: HTMLElement | null = null;
+      const showImage = (index: number) => {
+        current = (index + images.length) % images.length;
+        const image = images[current];
+        if (!image || !largeImage) return;
+        largeImage.src = image.href;
+        largeImage.alt = image.dataset.alt ?? '';
+        if (caption) caption.textContent = image.dataset.caption ?? '';
+        if (counter) counter.textContent = `${current + 1} de ${images.length}`;
+      };
+      images.forEach((image, index) =>
+        image.addEventListener('click', (event) => {
+          if (!viewer || typeof viewer.showModal !== 'function') return;
+          event.preventDefault();
+          opener = image;
+          showImage(index);
+          viewer.showModal();
+          document.documentElement.classList.add('gallery-open');
+        }),
+      );
+      viewer
+        ?.querySelector('[data-close]')
+        ?.addEventListener('click', () => viewer.close());
+      viewer
+        ?.querySelector('[data-previous]')
+        ?.addEventListener('click', () => showImage(current - 1));
+      viewer
+        ?.querySelector('[data-next]')
+        ?.addEventListener('click', () => showImage(current + 1));
+      viewer?.addEventListener('click', (event) => {
+        if (event.target === viewer) viewer.close();
+      });
+      viewer?.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          showImage(current + 1);
+        }
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          showImage(current - 1);
+        }
+      });
+      viewer?.addEventListener('close', () => {
+        document.documentElement.classList.remove('gallery-open');
+        opener?.focus();
+      });
+    </script>
+  </body>
+</html>

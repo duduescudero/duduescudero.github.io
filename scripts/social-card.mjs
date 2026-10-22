@@ -1,0 +1,15 @@
+import sharp from 'sharp';
+import { writeFile } from 'node:fs/promises';
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><radialGradient id="glow"><stop stop-color="#352448"/><stop offset="1" stop-color="#100d18"/></radialGradient></defs>
+<rect width="1200" height="630" fill="#090b0f"/><circle cx="1000" cy="325" r="300" fill="url(#glow)"/>
+<g fill="none" stroke="#b69cff" opacity=".2"><circle cx="1010" cy="320" r="165"/><circle cx="1010" cy="320" r="220"/><ellipse cx="1010" cy="320" rx="245" ry="100" transform="rotate(-38 1010 320)"/></g>
+<text x="75" y="100" fill="#edf2f7" font-family="sans-serif" font-size="36" font-weight="bold">ee<tspan fill="#b69cff">.</tspan></text>
+<text x="75" y="179" fill="#b69cff" font-family="monospace" font-size="14" letter-spacing="3">EDUARDO ESCUDERO / PORTFÓLIO</text>
+<g font-family="sans-serif" font-size="72" font-weight="bold" letter-spacing="-3"><text x="70" y="288" fill="#edf2f7">Ideias ganham forma.</text><text x="70" y="378" fill="#b69cff">Código faz acontecer.</text></g>
+<text x="75" y="467" fill="#b4bfcd" font-family="sans-serif" font-size="22">Engenharia de Software · FIAP</text>
+<path d="M75 531h1050" stroke="#292333"/><text x="75" y="574" fill="#b4bfcd" font-family="monospace" font-size="15">duduescudero.github.io</text><text x="1125" y="574" fill="#b69cff" text-anchor="end" font-family="monospace" font-size="15">INTERFACES / BACKEND / PROJETOS</text>
+</svg>`;
+await writeFile('public/social-card.svg', svg);
+await sharp(Buffer.from(svg)).png().toFile('public/social-card.png');
+console.log('Imagem de compartilhamento preparada em 1200 × 630.');

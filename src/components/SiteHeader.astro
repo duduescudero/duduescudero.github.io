@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+const home = Astro.url.pathname === '/';
+const section = (id: string) => `${home ? '' : '/'}#${id}`;
+---
+
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a
+      class="signature"
+      href={section('inicio')}
+      aria-label="Eduardo Escudero, início"
+    >
+      <span class="monogram">
+        ee<span>.</span>
+      </span>
+      <span class="signature-name">
+        eduardo
+        <br />
+        <strong>escudero</strong>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a data-section href={section('projetos')}>
+        Projetos
+      </a>
+      <a data-section href={section('sobre')}>
+        Sobre mim
+      </a>
+      <a data-section href={section('stack')}>
+        Tecnologias
+      </a>
+    </nav>
+    <a class="header-contact" href={section('contato')}>
+      Vamos conversar <Icon name="arrow" size={17} />
+    </a>
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menu de navegação">
+        <span></span>
+        <span></span>
+      </summary>
+      <nav aria-label="Navegação móvel">
+        <a href={section('projetos')}>Projetos</a>
+        <a href={section('sobre')}>Sobre mim</a>
+        <a href={section('stack')}>Tecnologias</a>
+        <a href={section('contato')}>Contato</a>
+      </nav>
+    </details>
+  </div>
+</header>

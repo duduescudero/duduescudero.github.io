@@ -1,0 +1,47 @@
+{
+  "fluxo-dashboard": {
+    "src": "/images/fluxo-dashboard.webp",
+    "width": 1440,
+    "height": 1400
+  },
+  "fluxo-detail": {
+    "src": "/images/fluxo-detail.webp",
+    "width": 1440,
+    "height": 1494
+  },
+  "fluxo-mobile": {
+    "src": "/images/fluxo-mobile.webp",
+    "width": 390,
+    "height": 2156
+  },
+  "fluxo-orders": {
+    "src": "/images/fluxo-orders.webp",
+    "width": 1440,
+    "height": 1417
+  },
+  "orbita-mobile": {
+    "src": "/images/orbita-mobile.webp",
+    "width": 390,
+    "height": 844
+  },
+  "orbita-vision": {
+    "src": "/images/orbita-vision.webp",
+    "width": 337,
+    "height": 600
+  },
+  "pokeidle-depot": {
+    "src": "/images/pokeidle-depot.webp",
+    "width": 750,
+    "height": 722
+  },
+  "pokeidle-desktop": {
+    "src": "/images/pokeidle-desktop.webp",
+    "width": 1180,
+    "height": 980
+  },
+  "pokeidle-details": {
+    "src": "/images/pokeidle-details.webp",
+    "width": 800,
+    "height": 740
+  }
+}

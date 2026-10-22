@@ -1,0 +1,292 @@
+---
+import Base from '../../layouts/Base.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import Icon from '../../components/Icon.astro';
+import { projects, type Project } from '../../content/projects';
+import images from '../../content/images.json';
+type ImageKey = keyof typeof images;
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const media = (file: string) => images[file as ImageKey];
+const next =
+  projects[
+    (projects.findIndex((item) => item.slug === project.slug) + 1) %
+      projects.length
+  ];
+---
+
+<Base
+  title={`${project.name} — Projeto de Eduardo Escudero`}
+  description={project.description}
+>
+  <SiteHeader />
+  <main id="conteudo" class="case-page">
+    <section class="case-hero wrap" aria-labelledby="case-title">
+      <a class="case-back text-link" href="/#projetos">
+        <span aria-hidden="true">←</span> Todos os projetos
+      </a>
+      <p class="eyebrow">
+        <span class="status-dot"></span> {project.category}
+      </p>
+      <h1 id="case-title">
+        {project.name}
+        <span class="accent-text">.</span>
+      </h1>
+      <p class="case-headline">{project.headline}</p>
+      <p class="case-intro">{project.description}</p>
+      <div class="case-meta">
+        <span>{project.kind}</span>
+        <span>Desenvolvimento individual · apoio de IA</span>
+      </div>
+      <ul class="tags" aria-label={`Tecnologias de ${project.name}`}>
+        {project.stack.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <div class="case-actions">
+        {project.demo && (
+          <a
+            class="button primary"
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir demonstração <Icon name="arrow" size={18} />
+          </a>
+        )}
+        <a
+          class={project.demo ? 'text-link' : 'button primary'}
+          href={project.repository}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" size={19} /> Ver código{' '}
+          <Icon name="arrow" size={15} />
+        </a>
+        <a class="text-link" href="#galeria">
+          Explorar imagens <Icon name="down" size={16} />
+        </a>
+      </div>
+      {project.demo && (
+        <p class="case-demo-note">
+          Dados fictícios, somente leitura. A primeira abertura após inatividade
+          pode levar cerca de um minuto.
+        </p>
+      )}
+    </section>
+    <div class={`case-cover wrap ${project.slug}`}>
+      <img
+        {...media(project.hero)}
+        alt={project.heroAlt}
+        fetchpriority="high"
+        decoding="async"
+      />
+      <span>CAPTURA REAL · DADOS DE DEMONSTRAÇÃO</span>
+    </div>
+    <div class="case-content wrap">
+      <nav class="case-nav" aria-label="Nesta página">
+        <p class="eyebrow">POR DENTRO DO PROJETO</p>
+        <a href="#contexto">01. Contexto</a>
+        <a href="#funcionamento">02. Funcionamento</a>
+        <a href="#arquitetura">03. Arquitetura</a>
+        <a href="#decisoes">04. Decisões</a>
+        <a href="#aprendizados">05. Aprendizados</a>
+        <a href="#galeria">06. Galeria</a>
+        <a href="#validacao">07. Validação e limites</a>
+      </nav>
+      <div class="case-body">
+        <section class="case-section" id="contexto">
+          <p class="eyebrow">01 / O PONTO DE PARTIDA</p>
+          <h2>
+            O contexto e o problema<span class="accent-text">.</span>
+          </h2>
+          <p>{project.summary}</p>
+          <p>{project.problem}</p>
+        </section>
+        <section class="case-section" id="funcionamento">
+          <p class="eyebrow">02 / O QUE FOI CONSTRUÍDO</p>
+          <h2>Como funciona.</h2>
+          <div class="case-features">
+            {project.features.map((feature) => (
+              <article>
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section class="case-section" id="arquitetura">
+          <p class="eyebrow">03 / CONECTANDO AS PARTES</p>
+          <h2>Arquitetura com intenção.</h2>
+          <ol class="architecture-flow">
+            {project.architecture.map((layer, index) => (
+              <li>
+                <span class="layer-number">0{index + 1}</span>
+                <div>
+                  <h3>{layer.name}</h3>
+                  <p>{layer.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <a
+            class="text-link"
+            href={project.docs}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ler a documentação técnica <Icon name="arrow" size={16} />
+          </a>
+        </section>
+        <section class="case-section" id="decisoes">
+          <p class="eyebrow">04 / O PORQUÊ DAS ESCOLHAS</p>
+          <h2>Decisões de engenharia.</h2>
+          <div class="case-decisions">
+            {project.decisions.map((decision, index) => (
+              <details open={index === 0}>
+                <summary>
+                  {decision.title}
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <p>{decision.text}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+        <section class="case-section" id="aprendizados">
+          <p class="eyebrow">05 / APRENDIZADO NA PRÁTICA</p>
+          <h2>Os detalhes fazem diferença.</h2>
+          <h3 class="case-subheading">O desafio</h3>
+          <p>{project.challenge}</p>
+          <div class="learning-note">
+            <span aria-hidden="true">↳</span>
+            <div>
+              <h3>O que esse projeto me ensinou</h3>
+              <p>{project.learning}</p>
+            </div>
+          </div>
+        </section>
+        <section class="case-section" id="galeria">
+          <p class="eyebrow">06 / O PROJETO EM TELAS</p>
+          <h2>Explore os detalhes.</h2>
+          <p>
+            Abra uma captura para ampliar. Use as setas para navegar e Esc para
+            fechar.
+          </p>
+          <div class="case-gallery">
+            {project.images.map((image, index) => (
+              <figure>
+                <a
+                  href={media(image.file).src}
+                  data-gallery
+                  data-alt={image.alt}
+                  data-caption={image.caption}
+                  aria-label={`Ampliar imagem ${index + 1}: ${image.caption}`}
+                >
+                  <img
+                    {...media(image.file)}
+                    alt={image.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="image-expand" aria-hidden="true">
+                    <Icon name="arrow" size={18} />
+                  </span>
+                </a>
+                <figcaption>
+                  <span>0{index + 1}</span>
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+        <section class="case-section" id="validacao">
+          <p class="eyebrow">07 / EVIDÊNCIAS E PRÓXIMOS PASSOS</p>
+          <h2>O que foi verificado.</h2>
+          <ul class="evidence-list">
+            {project.validation.map((item) => (
+              <li>
+                <Icon name="check" size={17} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <h3 class="case-subheading">Limites e evolução</h3>
+          <ul class="limits-list">
+            {project.limits.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p class="case-source-note">
+            A apresentação segue o código e a documentação do repositório. O
+            desenvolvimento contou com apoio de IA na implementação, revisão e
+            documentação.
+          </p>
+          <a
+            class="text-link"
+            href={project.repository}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explorar o repositório <Icon name="arrow" size={17} />
+          </a>
+        </section>
+      </div>
+    </div>
+    <section class="next-project wrap">
+      <div>
+        <p class="eyebrow">CONTINUE EXPLORANDO</p>
+        <a href={`/projetos/${next.slug}/`}>
+          {next.name}
+          <Icon name="arrow" size={38} />
+        </a>
+      </div>
+      <a class="text-link" href="/#contato">
+        Vamos conversar <Icon name="arrow" size={18} />
+      </a>
+    </section>
+  </main>
+  <SiteFooter />
+  <dialog
+    id="image-viewer"
+    aria-labelledby="gallery-title"
+    aria-describedby="gallery-caption"
+  >
+    <div class="viewer-inner">
+      <div class="viewer-header">
+        <h2 id="gallery-title">{project.name} · Galeria</h2>
+        <button data-close type="button" aria-label="Fechar galeria" autofocus>
+          Fechar <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="viewer-image">
+        <img
+          src={media(project.images[0].file).src}
+          alt={project.images[0].alt}
+        />
+      </div>
+      <div class="viewer-footer">
+        <button data-previous type="button" aria-label="Imagem anterior">
+          ←
+        </button>
+        <div>
+          <p id="gallery-caption"></p>
+          <span data-counter role="status" aria-live="polite"></span>
+        </div>
+        <button data-next type="button" aria-label="Próxima imagem">
+          →
+        </button>
+      </div>
+    </div>
+  </dialog>
+</Base>

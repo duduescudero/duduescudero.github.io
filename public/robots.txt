@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duduescudero.github.io/sitemap.xml
