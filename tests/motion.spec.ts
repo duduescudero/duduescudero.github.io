@@ -5,6 +5,12 @@ test('efeitos podem ser pausados e a preferência acompanha as páginas', async 
 }) => {
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('data-effects', 'on');
+  const nav = await page.locator('.desktop-nav').boundingBox();
+  const width = page.viewportSize()!.width;
+  expect(Math.abs(nav!.x + nav!.width / 2 - width / 2)).toBeLessThan(2);
+  const control = await page.locator('[data-motion-toggle]').boundingBox();
+  expect(control!.width).toBeLessThanOrEqual(44);
+  expect(control!.x).toBeGreaterThan(width - 70);
   await expect(page.locator('.hero-art')).toHaveAttribute(
     'data-ambient',
     'true',
@@ -53,6 +59,9 @@ test('preferência do sistema vale no carregamento e quando muda durante a visit
     await page
       .locator('.center-logo')
       .evaluate((el) => el.getAnimations().length),
+  ).toBe(0);
+  expect(
+    await page.locator('.headline-glow').evaluate((el) => el.getAnimations().length),
   ).toBe(0);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expect(page.locator('html')).toHaveAttribute('data-effects', 'on');

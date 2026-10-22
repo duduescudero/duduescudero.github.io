@@ -8,6 +8,7 @@ export function initMotion() {
     '[data-motion-toggle]',
   );
   const hero = document.querySelector<HTMLElement>('.hero-art');
+  const headline = document.querySelector<HTMLElement>('.headline-glow');
   const progress = document.querySelector<HTMLElement>(
     '[data-reading-progress]',
   );
@@ -56,6 +57,7 @@ export function initMotion() {
             : 'Ativar efeitos visuais',
       );
       const label = toggle.querySelector('[data-motion-label]');
+      toggle.title = toggle.getAttribute('aria-label') ?? '';
       if (label)
         label.textContent = reduced.matches
           ? 'Movimento reduzido'
@@ -148,6 +150,11 @@ export function initMotion() {
         },
         { threshold: 0.05 },
       ).observe(hero);
+    }
+    if (headline) {
+      new IntersectionObserver((entries) => {
+        headline.dataset.ambient = String(entries[0]?.isIntersecting ?? false);
+      }).observe(headline);
     }
   }
   if (hero) {

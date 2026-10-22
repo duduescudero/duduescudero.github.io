@@ -14,7 +14,7 @@ Página inicial, quatro estudos de projeto, galeria ampliada com teclado e resta
 
 Os projetos apresentados são [Meu Onze](https://github.com/duduescudero/meu-onze), [Fluxo OS](https://github.com/duduescudero/fluxo-os), [OrbitaVerde](https://github.com/duduescudero/orbita-verde) e [PokeIdle Manager](https://github.com/duduescudero/pokeidle-manager). Os textos descrevem o que está implementado e seus limites, incluindo o apoio de IA no desenvolvimento.
 
-A abertura tem órbitas e painéis flutuantes; os projetos recebem brilho e profundidade ao usar o mouse. Entradas suaves e uma barra de leitura acompanham a navegação. O controle no cabeçalho permite pausar os efeitos e salva a preferência; a preferência de movimento reduzido do dispositivo prevalece. O conteúdo continua acessível sem JavaScript.
+A abertura tem órbitas, painéis flutuantes e um reflexo roxo suave no título; os projetos recebem brilho e profundidade ao usar o mouse. Entradas suaves e uma barra de leitura acompanham a navegação. O pequeno controle no canto inferior direito permite pausar os efeitos e salva a preferência; a preferência de movimento reduzido do dispositivo prevalece. O conteúdo continua acessível sem JavaScript.
 
 ## Executar
 
