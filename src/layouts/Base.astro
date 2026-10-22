@@ -3,6 +3,7 @@ import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/manrope';
 import '../styles/global.css';
 import '../styles/project.css';
+import '../styles/motion.css';
 interface Props {
   title?: string;
   description?: string;
@@ -58,11 +59,21 @@ const person = {
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body>
+    <div
+      class="reading-progress"
+      data-reading-progress
+      hidden
+      aria-hidden="true"
+    >
+      <span></span>
+    </div>
     <a class="skip-link" href="#conteudo">
       Pular para o conteúdo
     </a>
     <slot />
     <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
       const sections =
         document.querySelectorAll<HTMLElement>('main section[id]');
       if ('IntersectionObserver' in window) {
@@ -105,25 +116,6 @@ const person = {
             message.textContent = 'E-mail: eduardoescudero911@gmail.com';
         }
       });
-      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if ('IntersectionObserver' in window && !motion.matches) {
-        const reveals = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-in-view');
-                reveals.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.05 },
-        );
-        document
-          .querySelectorAll(
-            '.section-heading,.case-section,.featured-project,.secondary-project',
-          )
-          .forEach((element) => reveals.observe(element));
-      }
       const viewer = document.querySelector<HTMLDialogElement>('#image-viewer');
       const images = [
         ...document.querySelectorAll<HTMLAnchorElement>('[data-gallery]'),

@@ -6,9 +6,10 @@
 - **Informações pessoais limitadas ao que foi fornecido:** nome, curso, FIAP, busca por estágio, GitHub e e-mail. Não são publicados LinkedIn, endereço, semestre, prazo de formatura ou experiência profissional não confirmada. Currículo e foto podem ser acrescentados depois, quando fornecidos.
 - **Evidências e limites:** screenshots reais e descrições baseadas nos repositórios. O apoio de IA é informado nas páginas dos projetos. Não há porcentagens de domínio de tecnologias, depoimentos inventados ou resultados fictícios apresentados como medição.
 - **Galeria com melhoria progressiva:** links de imagem funcionam sem JavaScript; navegadores com dialog recebem ampliação, teclas direcionais, Esc e restauração do foco.
-- **Movimento opcional:** transições discretas entre páginas e entradas suaves; `prefers-reduced-motion` desativa os efeitos e a rolagem suave.
+- **Movimento opcional:** órbitas lentas, painéis flutuantes, entradas suaves e transições discretas entre páginas. Um controle no cabeçalho pausa os efeitos e guarda a escolha localmente; `prefers-reduced-motion` prevalece e desativa os efeitos e a rolagem suave. Conteúdo e links funcionam sem JavaScript.
+- **Interação limitada ao contexto:** brilho e inclinação atuam apenas com ponteiro preciso, sobre as imagens dos projetos; os textos ficam estáveis. IntersectionObserver pausa o movimento ambiente fora da tela e revela cada bloco uma vez. A aba em segundo plano também pausa animações. Não há ciclo JavaScript contínuo: ponteiro e barra de leitura atualizam no máximo uma vez por quadro quando recebem eventos.
 - **Contato simples:** links `mailto`, GitHub e cópia com feedback. Sem formulário que simule envio e sem rastreamento.
-- **GitHub Pages:** hospedagem pública estática e atualização por GitHub Actions, após checagem, build e testes de navegador. O domínio canônico é `https://duduescudero.github.io/`. Uma cópia privada é sincronizada com Sites para preservar o fluxo da ferramenta de criação; ela não substitui a publicação pública.
+- **GitHub Pages:** hospedagem pública estática e atualização por GitHub Actions, após checagem, build e testes de navegador. O domínio canônico é `https://duduescudero.github.io/`. O manifesto do Sites identifica uma cópia privada anterior; a atualização dos efeitos usa a publicação pública pelo GitHub Pages.
 - **Fontes locais:** Manrope e Space Grotesk são distribuídas pelos pacotes Fontsource; não há chamadas ao Google Fonts durante a visita.
 
 ## Alterar conteúdo

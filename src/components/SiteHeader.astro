@@ -31,6 +31,17 @@ const section = (id: string) => `${home ? '' : '/'}#${id}`;
         Tecnologias
       </a>
     </nav>
+    <button
+      class="motion-toggle"
+      type="button"
+      data-motion-toggle
+      hidden
+      aria-pressed="true"
+      aria-label="Pausar efeitos visuais"
+    >
+      <span class="motion-symbol" aria-hidden="true"></span>
+      <span data-motion-label>Efeitos ligados</span>
+    </button>
     <a class="header-contact" href={section('contato')}>
       Vamos conversar <Icon name="arrow" size={17} />
     </a>
