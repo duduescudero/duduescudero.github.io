@@ -19,6 +19,16 @@
     "width": 1440,
     "height": 1417
   },
+  "meu-onze-arena": {
+    "src": "/images/meu-onze-arena.webp",
+    "width": 1265,
+    "height": 1353
+  },
+  "meu-onze-editor": {
+    "src": "/images/meu-onze-editor.webp",
+    "width": 1265,
+    "height": 1435
+  },
   "orbita-mobile": {
     "src": "/images/orbita-mobile.webp",
     "width": 390,

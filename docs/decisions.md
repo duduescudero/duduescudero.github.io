@@ -2,7 +2,7 @@
 
 - **Astro estático:** conteúdo em HTML, CSS e JavaScript pequeno para as interações. Sem banco, conta de visitante ou serviço que precise ficar acordado.
 - **Identidade aprovada:** fundo escuro, roxo claro nos destaques e fundos roxos nas apresentações do Fluxo OS e OrbitaVerde. As capturas preservam o visual dos projetos originais.
-- **Conteúdo centralizado:** `src/content/projects.ts` reúne os casos de estudo; `images.json` registra os tamanhos reais das imagens. A rota dinâmica gera as três páginas no build.
+- **Conteúdo centralizado:** `src/content/projects.ts` reúne os casos de estudo; `images.json` registra os tamanhos reais das imagens. A rota dinâmica gera as quatro páginas no build.
 - **Informações pessoais limitadas ao que foi fornecido:** nome, curso, FIAP, busca por estágio, GitHub e e-mail. Não são publicados LinkedIn, endereço, semestre, prazo de formatura ou experiência profissional não confirmada. Currículo e foto podem ser acrescentados depois, quando fornecidos.
 - **Evidências e limites:** screenshots reais e descrições baseadas nos repositórios. O apoio de IA é informado nas páginas dos projetos. Não há porcentagens de domínio de tecnologias, depoimentos inventados ou resultados fictícios apresentados como medição.
 - **Galeria com melhoria progressiva:** links de imagem funcionam sem JavaScript; navegadores com dialog recebem ampliação, teclas direcionais, Esc e restauração do foco.

@@ -10,9 +10,9 @@
 
 ## O que você encontra
 
-Página inicial, três estudos de projeto, galeria ampliada com teclado e restauração do foco, página 404, layout responsivo, fontes locais, imagens WebP, movimento reduzido, contato direto e cópia de e-mail com feedback. Cada página tem metadados próprios; sitemap, robots e imagem social preparam o compartilhamento.
+Página inicial, quatro estudos de projeto, galeria ampliada com teclado e restauração do foco, página 404, layout responsivo, fontes locais, imagens WebP, movimento reduzido, contato direto e cópia de e-mail com feedback. Cada página tem metadados próprios; sitemap, robots e imagem social preparam o compartilhamento.
 
-Os projetos apresentados são [Fluxo OS](https://github.com/duduescudero/fluxo-os), [OrbitaVerde](https://github.com/duduescudero/orbita-verde) e [PokeIdle Manager](https://github.com/duduescudero/pokeidle-manager). Os textos descrevem o que está implementado e seus limites, incluindo o apoio de IA no desenvolvimento.
+Os projetos apresentados são [Meu Onze](https://github.com/duduescudero/meu-onze), [Fluxo OS](https://github.com/duduescudero/fluxo-os), [OrbitaVerde](https://github.com/duduescudero/orbita-verde) e [PokeIdle Manager](https://github.com/duduescudero/pokeidle-manager). Os textos descrevem o que está implementado e seus limites, incluindo o apoio de IA no desenvolvimento.
 
 ## Executar
 

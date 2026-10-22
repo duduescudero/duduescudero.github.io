@@ -6,3 +6,5 @@
 - Elementos gráficos do portfólio feitos em SVG/CSS. As referências a tecnologias e projetos identificam as ferramentas e implementações apresentadas.
 
 As licenças e os avisos de dependências continuam aplicáveis; a licença MIT do portfólio não substitui os termos de fontes e outros componentes de terceiros.
+
+- Meu Onze: capturas da aplicação com escalação de exemplo. Elencos comunitários adaptados da Wikipédia, com atribuição e licença CC BY-SA 4.0 no projeto de origem. Não representam inscrições oficiais ou dados ao vivo.

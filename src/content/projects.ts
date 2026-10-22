@@ -7,6 +7,9 @@ export interface Project {
   description: string;
   repository: string;
   demo?: string;
+  demoNote?: string;
+  demoLabel?: string;
+  captureNote?: string;
   stack: string[];
   hero: string;
   heroAlt: string;
@@ -24,6 +27,113 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'meu-onze',
+    name: 'Meu Onze',
+    category: 'INTERFACE INTERATIVA & FUTEBOL',
+    kind: 'Projeto pessoal',
+    headline: 'Seu time. Suas escolhas. Um interesse pessoal em campo.',
+    description:
+      'Uma prancheta de futebol com jogadores da Série A, atletas personalizados e quatro minigames. React, TypeScript e SVG conectam criação, regras e compartilhamento.',
+    repository: 'https://github.com/duduescudero/meu-onze',
+    demo: 'https://duduescudero.github.io/meu-onze/',
+    demoLabel: 'Entrar em campo',
+    demoNote:
+      'Aplicação funcional, sem cadastro. Escalações e partidas ficam no navegador; elencos comunitários com datas de atualização visíveis.',
+    captureNote: 'CAPTURA REAL · ESCALAÇÃO DE EXEMPLO',
+    stack: ['React', 'TypeScript', 'SVG', 'Zustand', 'IndexedDB'],
+    hero: 'meu-onze-editor',
+    heroAlt:
+      'Prancheta do Meu Onze com uma escalação de exemplo e jogadores de clubes diferentes',
+    summary:
+      'O Meu Onze nasceu do meu interesse por futebol. O objetivo é oferecer uma ferramenta que alguém possa experimentar imediatamente: montar seu time, imaginar uma jogada ou disputar um desafio usando o mesmo catálogo.',
+    problem:
+      'Um campo interativo precisa funcionar com mouse, toque e teclado, preservar alterações e manter suas regras quando o usuário muda a formação ou retoma uma partida. O desafio vai além de colocar onze camisas na tela.',
+    features: [
+      {
+        title: 'Uma prancheta de verdade',
+        text: 'Formações, jogadores personalizados, banco, capitão, movimentações, passes e áreas. Há alternativas ao arrastar e histórico de alterações.',
+      },
+      {
+        title: 'Quatro desafios',
+        text: 'Onze às Cegas, Quem é o Jogador?, De Quem é Esse Elenco? e Onze com Regras, com retomada e placar pessoal.',
+      },
+      {
+        title: 'Criar e compartilhar',
+        text: 'PNG quadrado ou vertical, arquivos JSON validados e links que abrem cópias independentes das escalações.',
+      },
+      {
+        title: 'Dados com procedência',
+        text: '644 jogadores dos vinte clubes em um snapshot comunitário, com revisões, datas e atribuição por elenco.',
+      },
+    ],
+    architecture: [
+      {
+        name: 'Interface',
+        text: 'React e TypeScript, campo SVG e botões HTML acessíveis, com coordenadas proporcionais.',
+      },
+      {
+        name: 'Regras',
+        text: 'Funções testáveis para formações, candidatos, pontuação e verificação de solução do desafio.',
+      },
+      {
+        name: 'Estado local',
+        text: 'Zustand, histórico de alterações e biblioteca no IndexedDB. Partidas preservam seu snapshot de jogadores.',
+      },
+      {
+        name: 'Publicação',
+        text: 'Aplicação estática no GitHub Pages. O catálogo é preparado e validado fora do navegador.',
+      },
+    ],
+    decisions: [
+      {
+        title: 'Experimentar antes de cadastrar',
+        text: 'O produto não exige conta. A biblioteca pertence ao navegador e pode ser exportada, sem apresentar armazenamento local como nuvem.',
+      },
+      {
+        title: 'O jogador dentro da escalação',
+        text: 'Cada escalação conserva cópias dos atletas. Atualizar um elenco ou editar um personalizado não reescreve silenciosamente um time já salvo.',
+      },
+      {
+        title: 'Regras que permitem terminar',
+        text: 'O sorteio só considera clubes com candidatos compatíveis. O catálogo também passa por uma verificação de emparelhamento entre vagas e clubes para o desafio de onze clubes.',
+      },
+      {
+        title: 'Uma fonte que pode ser atribuída',
+        text: 'Elencos adaptados da Wikipédia sob CC BY-SA 4.0, separados do código MIT. Não se incorporam fotografias, escudos ou notas fictícias de habilidade.',
+      },
+    ],
+    challenge:
+      'Uma interação visual não pode depender apenas do arrastar. O projeto combina Pointer Events com seleção por clique e controles de posição pelo teclado. As mesmas coordenadas normalizadas alimentam o campo, as marcações e a imagem exportada.',
+    learning:
+      'Separar apresentação, regras e dados permite reaproveitar um catálogo em experiências diferentes. Também torna explícitas as diferenças entre uma escolha ainda editável, uma decisão travada e um resultado confirmado.',
+    validation: [
+      '20 testes de regras e formulário com Vitest e Testing Library.',
+      'Oito jornadas Playwright, incluindo partidas completas nos quatro minigames.',
+      'Compartilhamento entre contextos, PNG/JSON, persistência e marcações táticas exercitados.',
+      'Larguras de 320, 390, 768 e 1440 pixels e verificações automatizadas com axe.',
+      'Validação dos vinte clubes e publicação pelo GitHub Actions.',
+    ],
+    limits: [
+      'Catálogo comunitário datado; não é uma lista oficial de inscritos ou atualização ao vivo.',
+      'Salvamentos pertencem ao navegador. Não há conta, sincronização, ranking global ou multiplayer.',
+      'As posições são gerais: goleiro, defensor, meio-campo e atacante.',
+      'Sem avaliação automática da força de um time, apostas ou animação de jogadas em etapas.',
+    ],
+    images: [
+      {
+        file: 'meu-onze-editor',
+        alt: 'Campo e catálogo do Meu Onze com onze jogadores de exemplo',
+        caption: 'Editor completo com uma escalação criada para apresentação.',
+      },
+      {
+        file: 'meu-onze-arena',
+        alt: 'Os quatro minigames disponíveis na Arena do Meu Onze',
+        caption: 'Quatro formas de jogar usando o catálogo de elencos datado.',
+      },
+    ],
+    docs: 'https://github.com/duduescudero/meu-onze/blob/main/docs/architecture.md',
+  },
   {
     slug: 'fluxo-os',
     name: 'Fluxo OS',

@@ -60,7 +60,8 @@ const next =
             target="_blank"
             rel="noopener noreferrer"
           >
-            Abrir demonstração <Icon name="arrow" size={18} />
+            {project.demoLabel || 'Abrir demonstração'}{' '}
+            <Icon name="arrow" size={18} />
           </a>
         )}
         <a
@@ -78,8 +79,8 @@ const next =
       </div>
       {project.demo && (
         <p class="case-demo-note">
-          Dados fictícios, somente leitura. A primeira abertura após inatividade
-          pode levar cerca de um minuto.
+          {project.demoNote ||
+            'Dados fictícios, somente leitura. A primeira abertura após inatividade pode levar cerca de um minuto.'}
         </p>
       )}
     </section>
@@ -90,7 +91,9 @@ const next =
         fetchpriority="high"
         decoding="async"
       />
-      <span>CAPTURA REAL · DADOS DE DEMONSTRAÇÃO</span>
+      <span>
+        {project.captureNote || 'CAPTURA REAL · DADOS DE DEMONSTRAÇÃO'}
+      </span>
     </div>
     <div class="case-content wrap">
       <nav class="case-nav" aria-label="Nesta página">

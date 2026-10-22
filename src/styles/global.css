@@ -2137,3 +2137,15 @@
     }
   }
 }
+
+@layer layout {
+  .portfolio-games {
+    margin-top: 28px;
+  }
+  .meu-onze-visual .browser-mockup {
+    max-height: 330px;
+  }
+  .meu-onze-visual .browser-mockup img {
+    width: 100%;
+  }
+}

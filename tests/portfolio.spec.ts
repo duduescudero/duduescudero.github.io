@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const cases = [
+  { slug: 'meu-onze', name: 'Meu Onze' },
   { slug: 'fluxo-os', name: 'Fluxo OS' },
   { slug: 'orbita-verde', name: 'OrbitaVerde' },
   { slug: 'pokeidle-manager', name: 'PokeIdle Manager' },
