@@ -1054,6 +1054,7 @@
   }
   .contact-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     align-items: center;
     margin-top: 31px;
@@ -1114,6 +1115,23 @@
   }
   .site-footer .text-link {
     font-size: 10px;
+  }
+  .footer-networks {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 3px;
+  }
+  .footer-networks a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer-networks a:hover {
+    color: var(--accent);
   }
 }
 @layer components {

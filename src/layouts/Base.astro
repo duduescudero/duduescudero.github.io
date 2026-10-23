@@ -4,6 +4,7 @@ import '@fontsource-variable/manrope';
 import '../styles/global.css';
 import '../styles/project.css';
 import '../styles/motion.css';
+import { github, linkedin } from '../content/contact';
 interface Props {
   title?: string;
   description?: string;
@@ -21,7 +22,7 @@ const person = {
   '@type': 'Person',
   name: 'Eduardo Escudero',
   url: String(Astro.site),
-  sameAs: ['https://github.com/duduescudero'],
+  sameAs: [github, linkedin],
   description:
     'Estudante de Engenharia de Software na FIAP, em busca de estágio em desenvolvimento.',
 };

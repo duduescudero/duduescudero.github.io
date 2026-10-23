@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import { github, linkedin } from '../content/contact';
 ---
 
 <footer class="wrap site-footer">
@@ -14,6 +15,12 @@ import Icon from './Icon.astro';
     © {new Date().getFullYear()} Eduardo Escudero.
     <br />
     <span>Construindo, aprendendo e seguindo em frente.</span>
+    <br />
+    <span class="footer-networks">
+      <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </span>
   </p>
   <a class="text-link" href="#conteudo">
     Voltar ao topo <Icon name="arrow" size={16} />
