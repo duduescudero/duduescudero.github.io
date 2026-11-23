@@ -4,6 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 const cases = [
   { slug: 'meu-onze', name: 'Meu Onze' },
   { slug: 'fluxo-os', name: 'Fluxo OS' },
+  { slug: 'alerta-enchente', name: 'AlertaEnchente' },
   { slug: 'orbita-verde', name: 'OrbitaVerde' },
   { slug: 'pokeidle-manager', name: 'PokeIdle Manager' },
 ];
@@ -159,6 +160,9 @@ test('links internos, recursos de busca e página 404 estão conectados', async 
   );
   expect((await request.get('/robots.txt')).ok()).toBe(true);
   expect((await request.get('/social-card.png')).ok()).toBe(true);
+  const resume = await request.get('/CV_Eduardo_Pires_Escudero.pdf');
+  expect(resume.ok()).toBe(true);
+  expect(resume.headers()['content-type']).toContain('pdf');
   await page.goto('/404.html');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Essa ideia',

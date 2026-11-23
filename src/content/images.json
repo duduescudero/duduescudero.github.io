@@ -1,4 +1,29 @@
 {
+  "alerta-detalhes": {
+    "src": "/images/alerta-detalhes.png",
+    "width": 585,
+    "height": 1266
+  },
+  "alerta-integracao": {
+    "src": "/images/alerta-integracao.png",
+    "width": 1500,
+    "height": 1010
+  },
+  "alerta-ml": {
+    "src": "/images/alerta-ml.png",
+    "width": 1350,
+    "height": 600
+  },
+  "alerta-risco": {
+    "src": "/images/alerta-risco.png",
+    "width": 585,
+    "height": 1266
+  },
+  "alerta-swagger": {
+    "src": "/images/alerta-swagger.png",
+    "width": 1280,
+    "height": 1300
+  },
   "fluxo-dashboard": {
     "src": "/images/fluxo-dashboard.webp",
     "width": 1440,

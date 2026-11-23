@@ -2,6 +2,7 @@
 
 - Código e conteúdo: Eduardo Escudero, com apoio de IA na implementação, revisão, testes e documentação.
 - Capturas reais dos repositórios `duduescudero/fluxo-os`, `duduescudero/orbita-verde` e `duduescudero/pokeidle-manager`. Dados demonstrativos não representam clientes, operação comercial ou resultados medidos no jogo.
+- AlertaEnchente: capturas e gráfico dos repositórios `duduescudero/alerta-enchente-mobile`, `duduescudero/alerta-enchente-api` e `duduescudero/alerta-enchente-ml`, desenvolvidos em equipe (Arthur Silva, Eduardo Escudero, Leonardo Prado, Davi Vieira e Luca Monteiro). Regiões, cotas e leituras são simuladas; o gráfico usa dados reais do INMET.
 - Manrope Variable e Space Grotesk Variable, distribuídas pelo Fontsource sob SIL Open Font License 1.1. Os textos de licença são preservados em `docs/licenses/`.
 - Elementos gráficos do portfólio feitos em SVG/CSS. As referências a tecnologias e projetos identificam as ferramentas e implementações apresentadas.
 
