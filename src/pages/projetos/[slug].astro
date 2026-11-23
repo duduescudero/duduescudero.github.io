@@ -45,7 +45,7 @@ const next =
       <p class="case-intro">{project.description}</p>
       <div class="case-meta">
         <span>{project.kind}</span>
-        <span>Desenvolvimento individual · apoio de IA</span>
+        <span>{project.team || 'Desenvolvimento individual · apoio de IA'}</span>
       </div>
       <ul class="tags" aria-label={`Tecnologias de ${project.name}`}>
         {project.stack.map((item) => (

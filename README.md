@@ -10,9 +10,9 @@
 
 ## O que você encontra
 
-Página inicial, quatro estudos de projeto, galeria ampliada com teclado e restauração do foco, página 404, layout responsivo, fontes locais, imagens WebP, movimento reduzido, contato direto e cópia de e-mail com feedback. Cada página tem metadados próprios; sitemap, robots e imagem social preparam o compartilhamento.
+Página inicial, cinco estudos de projeto, currículo em PDF, galeria ampliada com teclado e restauração do foco, página 404, layout responsivo, fontes locais, imagens WebP, movimento reduzido, contato direto e cópia de e-mail com feedback. Cada página tem metadados próprios; sitemap, robots e imagem social preparam o compartilhamento.
 
-Os projetos apresentados são [Meu Onze](https://github.com/duduescudero/meu-onze), [Fluxo OS](https://github.com/duduescudero/fluxo-os), [OrbitaVerde](https://github.com/duduescudero/orbita-verde) e [PokeIdle Manager](https://github.com/duduescudero/pokeidle-manager). Os textos descrevem o que está implementado e seus limites, incluindo o apoio de IA no desenvolvimento.
+Os projetos em destaque são [Fluxo OS](https://github.com/duduescudero/fluxo-os), [Meu Onze](https://github.com/duduescudero/meu-onze), [OrbitaVerde](https://github.com/duduescudero/orbita-verde) e [AlertaEnchente](https://github.com/duduescudero/alerta-enchente-api), este feito em equipe na Global Solution da FIAP. [PokeIdle Manager](https://github.com/duduescudero/pokeidle-manager), [ExpenseHub](https://github.com/duduescudero/expensehub) e [IoT Control](https://github.com/duduescudero/iot-control-mqtt) aparecem na lista "Também no GitHub". Os textos descrevem o que está implementado e seus limites, incluindo o apoio de IA no desenvolvimento.
 
 A abertura tem órbitas, painéis flutuantes e um reflexo roxo suave no título; os projetos recebem brilho e profundidade ao usar o mouse. Entradas suaves e uma barra de leitura acompanham a navegação. O pequeno controle no canto inferior direito permite pausar os efeitos e salva a preferência; a preferência de movimento reduzido do dispositivo prevalece. O conteúdo continua acessível sem JavaScript.
 
@@ -40,7 +40,8 @@ Astro com TypeScript, CSS responsivo e fontes Manrope e Space Grotesk hospedadas
 - `src/layouts/Base.astro`: estrutura da página e interações.
 - `src/styles/global.css`: identidade visual, componentes e ajustes responsivos.
 - `src/scripts/motion.ts` e `src/styles/motion.css`: efeitos opcionais, pausa e interação com o ponteiro.
-- `public/images/`: capturas de Fluxo OS, OrbitaVerde e PokeIdle Manager, copiadas dos repositórios locais sem alterar os arquivos de origem.
+- `public/images/`: capturas de Fluxo OS, Meu Onze, OrbitaVerde, AlertaEnchente e PokeIdle Manager, copiadas dos repositórios sem alterar os arquivos de origem. As do AlertaEnchente ainda estão em PNG; `npm run assets:prepare` gera as versões WebP.
+- `public/CV_Eduardo_Pires_Escudero.pdf`: currículo público, sem telefone.
 - `.local/`: evidências da revisão, ignoradas pelo Git.
 
 ## Testes

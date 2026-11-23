@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   category: string;
   kind: string;
+  team?: string;
   headline: string;
   description: string;
   repository: string;
@@ -244,6 +245,132 @@ export const projects: Project[] = [
       },
     ],
     docs: 'https://github.com/duduescudero/fluxo-os/blob/main/docs/architecture.md',
+  },
+  {
+    slug: 'alerta-enchente',
+    name: 'AlertaEnchente',
+    category: 'API, MACHINE LEARNING & MOBILE',
+    kind: 'Projeto acadêmico · FIAP · Global Solution 2026',
+    team: 'Desenvolvimento em equipe de cinco integrantes · apoio de IA',
+    headline: 'Do sensor ao celular do morador. Avisos de enchente com antecedência.',
+    description:
+      'Um sistema de alerta de enchentes com APIs em FastAPI e .NET, previsão de chuva intensa com dados reais do INMET e um aplicativo mobile com farol de risco. Projeto em equipe da Global Solution da FIAP.',
+    repository: 'https://github.com/duduescudero/alerta-enchente-api',
+    captureNote: 'CAPTURA REAL · REGIÕES E LEITURAS SIMULADAS',
+    stack: [
+      'Python / FastAPI',
+      'C# / .NET',
+      'PostgreSQL',
+      'scikit-learn',
+      'React Native',
+    ],
+    hero: 'alerta-risco',
+    heroAlt:
+      'Tela de risco do aplicativo AlertaEnchente com o farol vermelho de perigo e a orientação ao morador',
+    summary:
+      'O AlertaEnchente foi a CitizenTech da nossa equipe na Global Solution 2026.2 da FIAP. Cada disciplina construiu uma parte do mesmo sistema: a API que guarda dados e regras, o modelo que estima chuva forte, o aplicativo do morador e o sensor do córrego.',
+    problem:
+      'Moradores de áreas alagáveis, como o Jardim Helena, na Zona Leste de São Paulo, costumam receber o aviso de enchente tarde demais para proteger pessoas e bens. O sistema transforma o nível do córrego e a previsão de chuva em um farol simples, verde, amarelo ou vermelho, acompanhado do que fazer.',
+    features: [
+      {
+        title: 'Farol de risco por região',
+        text: 'A API classifica cada leitura do sensor pelas cotas de alerta e emergência da região. O aplicativo mostra o farol e a orientação em linguagem simples.',
+      },
+      {
+        title: 'Ocorrências do morador',
+        text: 'Registro de problemas como rua alagada ou bueiro entupido, com ciclo aberta, em atendimento e resolvida, além de busca com filtros e paginação.',
+      },
+      {
+        title: 'Previsão de chuva intensa',
+        text: 'Um Random Forest treinado com dados horários reais do INMET, de 2022 a 2025, estima se as próximas 24 horas terão 20 mm de chuva ou mais.',
+      },
+      {
+        title: 'Aplicativo acessível',
+        text: 'Fonte grande, estado do farol também em texto, botões para ligar para Defesa Civil, Bombeiros e SAMU e funcionamento com dados de demonstração quando a API não responde.',
+      },
+    ],
+    architecture: [
+      {
+        name: 'API Python',
+        text: 'FastAPI em camadas (API, aplicação, domínio e infraestrutura), PostgreSQL, migrações Alembic e Swagger.',
+      },
+      {
+        name: 'API .NET',
+        text: 'Versão em C# com ASP.NET Core 8, Entity Framework Core com migrações e SQLite, LINQ e testes xUnit.',
+      },
+      {
+        name: 'Machine Learning',
+        text: 'Notebook com pandas e scikit-learn, divisão pela ordem do tempo, busca de hiperparâmetros e comparação com regras simples.',
+      },
+      {
+        name: 'Mobile',
+        text: 'Expo Router, TypeScript, SQLite local e consumo da API com retorno aos dados de demonstração.',
+      },
+    ],
+    decisions: [
+      {
+        title: 'Regras no domínio, não na rota',
+        text: 'O cálculo do farol, a validação das cotas e o ciclo da ocorrência ficam em classes de domínio testadas sem banco e sem HTTP.',
+      },
+      {
+        title: 'Esquema criado pelas migrações',
+        text: 'O banco é criado e evoluído pelo Alembic, com downgrade em todas as versões, em vez de o ORM criar tabelas ao iniciar a aplicação.',
+      },
+      {
+        title: 'Treinar no passado, testar no futuro',
+        text: 'O modelo usa uma divisão pela ordem do tempo, com 24 horas de folga entre treino e teste, para não vazar informação e superestimar o resultado.',
+      },
+      {
+        title: 'O app nunca fica preso no carregamento',
+        text: 'Tempo limite de 6 segundos, validação do formato da resposta e retorno aos dados locais, sempre informando de onde vieram os dados.',
+      },
+    ],
+    challenge:
+      'Chuva forte é rara: só cerca de 7% das horas do conjunto são positivas. Um modelo que sempre responde "não" acerta quase tudo e não ajuda ninguém. Por isso o modelo usa peso para a classe rara, é comparado com regras simples e tem seus alarmes falsos medidos e documentados.',
+    learning:
+      'Uma métrica boa no papel não garante utilidade para o cidadão. Traduzir o resultado em dias avisados e alarmes falsos por mês mostrou que o modelo funciona como uma camada de "prepare-se"; a ordem de sair de casa deve vir do sensor do córrego ou da Defesa Civil.',
+    validation: [
+      '38 testes pytest na API Python, cobrindo domínio, endpoints e migrações a partir de um banco vazio.',
+      '68 testes xUnit na API .NET, incluindo regras de risco, serviços e CRUD de regiões.',
+      'Modelo no período de teste: ROC-AUC 0,83, F1 0,24 e recall 0,55, acima das regras simples comparadas (F1 0,15 e 0,13).',
+      'Nos 11 dias de chuva forte do teste, o farol vermelho avisou em todos, com cerca de 7 alarmes falsos por mês.',
+      'Aplicativo verificado com TypeScript estrito, exportação web e a jornada completa executada.',
+    ],
+    limits: [
+      'Regiões, cotas e leituras são simuladas para a demonstração; não há sensor instalado em um córrego real.',
+      'O modelo gera alarmes falsos com frequência e não substitui os avisos oficiais da Defesa Civil.',
+      'Os testes da API Python usam SQLite em memória; o teste de migração com PostgreSQL depende de um banco descartável.',
+      'O aplicativo não foi publicado nas lojas e não envia notificações.',
+    ],
+    images: [
+      {
+        file: 'alerta-risco',
+        alt: 'Tela de risco do AlertaEnchente com o farol vermelho de perigo',
+        caption: 'Farol da região, orientação ao morador e troca de região.',
+      },
+      {
+        file: 'alerta-detalhes',
+        alt: 'Detalhes de uma região com as cotas e os botões de ligação para emergência',
+        caption:
+          'Cotas de atenção e perigo e ligação direta para Defesa Civil, Bombeiros e SAMU.',
+      },
+      {
+        file: 'alerta-integracao',
+        alt: 'Três telas do aplicativo mudando de atenção para perigo após uma leitura enviada à API',
+        caption: 'Integração: uma leitura enviada à API muda o farol no aplicativo.',
+      },
+      {
+        file: 'alerta-ml',
+        alt: 'Gráfico de F1 no teste comparando o Random Forest com regras simples',
+        caption: 'O modelo comparado com regras simples no período de teste.',
+      },
+      {
+        file: 'alerta-swagger',
+        alt: 'Documentação Swagger dos endpoints da API AlertaEnchente',
+        caption: 'Contrato REST documentado automaticamente pelo FastAPI.',
+      },
+    ],
+    docs: 'https://github.com/duduescudero/alerta-enchente-api#arquitetura',
   },
   {
     slug: 'orbita-verde',

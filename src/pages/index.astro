@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import media from '../content/images.json';
-import { github, linkedin, email } from '../content/contact';
+import { github, linkedin, email, resume } from '../content/contact';
 const stack = [
   {
     number: '01',
@@ -51,12 +51,16 @@ const stack = [
         </h1>
         <p class="hero-description">
           Sou <strong>Eduardo Escudero</strong>, estudante de Engenharia de
-          Software na FIAP. Transformo curiosidade em projetos — de interfaces a
-          sistemas completos.
+          Software na FIAP (6º semestre, conclusão em dez/2027), em São Paulo.
+          Desenvolvo aplicações full stack com React, TypeScript, C#/.NET e
+          PostgreSQL.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#projetos">
             Explorar projetos <Icon name="down" size={18} />
+          </a>
+          <a class="text-link" href={resume} download>
+            Baixar currículo <Icon name="down" size={15} />
           </a>
           <a
             class="text-link"
@@ -69,8 +73,8 @@ const stack = [
           </a>
         </div>
         <p class="opportunity">
-          <span class="tiny-cross">+</span> Buscando minha primeira oportunidade
-          em desenvolvimento.
+          <span class="tiny-cross">+</span> Disponível para estágio em
+          desenvolvimento · presencial, híbrido ou remoto.
         </p>
       </div>
 
@@ -395,60 +399,106 @@ const stack = [
             </a>
           </div>
         </article>
-        <article class="secondary-project" id="pokeidle">
-          <div class="secondary-visual poke-visual">
+        <article class="secondary-project" id="alerta">
+          <div class="secondary-visual orbita-visual alerta-visual">
             <span class="visual-number">04 / 04</span>
-            <div class="poke-title" aria-hidden="true">
-              <span class="pixel-star">✦</span> PokeIdle<span>Manager</span>
+            <div class="orbita-title" aria-hidden="true">
+              <span class="orbita-symbol">◉</span> alerta<span>enchente</span>
+              <small>DO SENSOR AO CELULAR DO MORADOR.</small>
             </div>
-            <div class="desktop-frame">
+            <div class="phone-frame">
               <img
-                {...media['pokeidle-desktop']}
-                alt="Interface Windows Forms do PokeIdle Manager com contas e métricas fictícias"
+                {...media['alerta-risco']}
+                alt="Tela real do aplicativo AlertaEnchente com o farol de risco de uma região"
                 loading="lazy"
               />
             </div>
-            <span class="poke-caption">
-              UM INTERESSE PESSOAL. UM DESAFIO DE ENGENHARIA.
-            </span>
+            <div class="vision-frame">
+              <img
+                {...media['alerta-ml']}
+                alt="Gráfico do modelo de previsão de chuva comparado com regras simples"
+                loading="lazy"
+              />
+              <span>MACHINE LEARNING / DADOS DO INMET</span>
+            </div>
           </div>
           <div class="secondary-copy">
             <p class="project-category">
-              PROJETO PESSOAL <span>DESKTOP & EVENTOS</span>
+              PROJETO ACADÊMICO <span>FIAP · EQUIPE</span>
             </p>
             <div class="project-title-row">
               <h3>
-                <a href="/projetos/pokeidle-manager/">PokeIdle Manager</a>
+                <a href="/projetos/alerta-enchente/">AlertaEnchente</a>
               </h3>
               <a
                 class="round-link"
-                href={`${github}/pokeidle-manager`}
+                href={`${github}/alerta-enchente-api`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Código do PokeIdle Manager no GitHub"
+                aria-label="Código do AlertaEnchente no GitHub"
               >
                 <Icon name="github" size={22} />
               </a>
             </div>
             <p>
-              Um hobby que virou aplicação. Múltiplas sessões, reconexão e
-              confirmação de operações em uma interface desktop.
+              Alerta de enchentes do sensor ao celular. APIs em FastAPI e .NET,
+              previsão de chuva com dados reais e um app com farol de risco.
             </p>
             <ul class="tags">
-              <li>Node.js</li>
-              <li>JavaScript</li>
-              <li>C#</li>
-              <li>WebSocket</li>
+              <li>FastAPI</li>
+              <li>C# / .NET</li>
+              <li>scikit-learn</li>
+              <li>React Native</li>
             </ul>
             <a
               class="text-link project-case-link"
-              href="/projetos/pokeidle-manager/"
+              href="/projetos/alerta-enchente/"
             >
               Conhecer o projeto <Icon name="arrow" size={16} />
             </a>
           </div>
         </article>
       </div>
+      <section class="more-projects" aria-labelledby="more-projects-title">
+        <h3 id="more-projects-title">Também no GitHub</h3>
+        <ul>
+          <li>
+            <a
+              href={`${github}/expensehub`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ExpenseHub <Icon name="arrow" size={14} />
+            </a>
+            <p>
+              API de reembolsos com ASP.NET Identity, RabbitMQ, worker em C# e
+              relatórios em Excel.
+            </p>
+          </li>
+          <li>
+            <a href="/projetos/pokeidle-manager/">
+              PokeIdle Manager <Icon name="arrow" size={14} />
+            </a>
+            <p>
+              Aplicação desktop orientada a eventos, com Node.js, C# e
+              WebSocket.
+            </p>
+          </li>
+          <li>
+            <a
+              href={`${github}/iot-control-mqtt`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IoT Control <Icon name="arrow" size={14} />
+            </a>
+            <p>
+              Aplicativo React Native que controla dispositivos por MQTT, com
+              simulador e testes.
+            </p>
+          </li>
+        </ul>
+      </section>
       <a
         class="all-projects text-link"
         href={github + '?tab=repositories'}
@@ -596,6 +646,9 @@ const stack = [
             rel="noopener noreferrer"
           >
             <Icon name="linkedin" /> LinkedIn <Icon name="arrow" size={15} />
+          </a>
+          <a class="text-link" href={resume} download>
+            Currículo (PDF) <Icon name="down" size={15} />
           </a>
         </div>
         <div class="email-line">

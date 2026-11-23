@@ -84,6 +84,12 @@
   .case-cover.orbita-verde > img {
     max-height: 480px;
   }
+  .case-cover.alerta-enchente {
+    background: radial-gradient(ellipse at center, #1e3a5f, #121722 80%);
+  }
+  .case-cover.alerta-enchente > img {
+    max-height: 480px;
+  }
   .case-cover.pokeidle-manager {
     background: radial-gradient(ellipse at center, #293452, #151722 80%);
   }
